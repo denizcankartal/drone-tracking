@@ -1,13 +1,23 @@
 # Tracking drones with a PTU(Pan and Tilt Unit)
-## Introduction
-### Idea
+
+### Components
+
+Component | Brand, Type | Documentation | Role |
+ :------------: | :-----------: | :-----------: | ----------- |
+Pan and Tilt Unit | __[FLIR PTU-5](https://www.flir.com/products/ptu-5/)__ |Go to FLIR-5-PAN-AND-TILT-UNIT/ under this repo| Keep the tracked object in the center of the frame. |
+Embedded Computing Board | __[Nvidia Jetson NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/)__ | __[Getting Started](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit)__ <br> __[Nvidia Jetson Forums](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/70)__| Object detection, object tracking, interface to the camera, and communication with the laser and the PTU.|
+Laser Ranger| __[Bosch GLM 50c](https://www.bosch-professional.com/ao/en/products/glm-50-c-0601072C00)__ | __[Instruction Manual](https://www.bosch-professional.com/manuals/professional/ao/en/online-manual/200356428/en-AO/index.html)__ | Calculate the distance between the object and the system.|
+
+
+
+## Approach
 1. Start a communication between the host machine and the PTU over ethernet.
 2. Use a detection model or a tracking algorithm to get a bounding box of the object on each frame.
 3. Calculate the center of the object and the center of the frame for on the current frame.
 4. Calculate the error, that is the distance between the center of the frame and object.
 5. Use the PID controller to avoid the error.
 6. Move the PTU to take the center of the object on to the center of that frame.
-7. If the error is very low, hit the target with the laser to find the range.
+7. If the error is very low, communicate with the laser over Bluetooth to hit the target to find the range.
 8. Go to step 2 and do the same for the next frame.
 
 *Note that step-7 is not implemented yet!*
