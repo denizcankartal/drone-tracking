@@ -1,8 +1,5 @@
 # Tracking drones with a PTU(Pan and Tilt Unit)
 ## Introduction
-- The goal of this project is to develop a system that can track a drone.
-- 
-- But this repo can be used to track other type of objects as well.
 ### Idea
 1. Start a communication between the host machine and the PTU over ethernet.
 2. Use a detection model or a tracking algorithm to get a bounding box of the object on each frame.
