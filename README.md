@@ -1,4 +1,19 @@
 # Tracking drones with a PTU(Pan and Tilt Unit)
+## Introduction
+- The goal of this project is to develop a system that can track a drone.
+- 
+- But this repo can be used to track other type of objects as well.
+### Idea
+1. Start a communication between the host machine and the PTU over ethernet.
+2. Use a detection model or a tracking algorithm to get a bounding box of the object on each frame.
+3. Calculate the center of the object and the center of the frame for on the current frame.
+4. Calculate the error, that is the distance between the center of the frame and object.
+5. Use the PID controller to avoid the error.
+6. Move the PTU to take the center of the object on to the center of that frame.
+7. If the error is very low, hit the target with the laser to find the range.
+8. Go to step 2 and do the same for the next frame.
+
+*Note that step-7 is not implemented yet!*
 
 ## Setup
 - After cloning the repo issue "pip install -r requirements.txt" to install the packages.
@@ -64,3 +79,43 @@ track_by_tracking_with_PTU.py -v [video_path] -t[tracker] -s [serial]
 [tracker] - Object Tracking algoritm. ["kcf", "csrt", "mil"].
 [serial] - Path to the serial port, to start the communication with the PTU.
 </pre>
+
+## Useful Resources for advancing this repo
+
+[TensorFlow Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection)
+
+[TensorFlow Model Garden](https://github.com/tensorflow/models)
+
+[TensorFlow 2 Detection Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)
+
+[Object Detection From TF2 Saved Model](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/auto_examples/plot_object_detection_saved_model.html)
+
+[Object Detection From TF2 Checkpoint](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/auto_examples/plot_object_detection_checkpoint.html)
+
+[Detect Objects Using Your Webcam](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/auto_examples/object_detection_camera.html)
+
+[PySerial](https://pyserial.readthedocs.io/en/latest/pyserial.html)
+
+[FLIR PTU-5](https://www.flir.com/products/ptu-5/)
+
+[OpenCV](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
+
+[Multiple Object Tracking Algorithms](https://manivannan-ai.medium.com/multiple-object-tracking-algorithms-a01973272e52)
+
+[Multiple Object Tracking in Realtime](https://opencv.org/multiple-object-tracking-in-realtime/)
+
+[Object Tracking using OpenCV](https://learnopencv.com/object-tracking-using-opencv-cpp-python/)
+
+[Quick Guide to Object Tracking](https://cv-tricks.com/object-tracking/quick-guide-mdnet-goturn-rolo/)
+
+[Getting Started with Nvidia Jetson Xavier NX](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit)
+
+[jetson-inference from dusty-nv](https://github.com/dusty-nv/jetson-inference)
+
+[BOSCH GLM rangefinder python repo from philipptrenz](https://github.com/philipptrenz/BOSCH-GLM-rangefinder)
+
+[How to connect Bluetooth in Python to BOSCH GLM 50C](https://medium.com/analytics-vidhya/how-to-use-connect-bluetooth-in-python-from-scartch-to-bosch-glm-50-c-in-window-e75d8206fab4)
+
+[PID controller explained](https://pidexplained.com/pid-controller-explained/)
+
+[PID Tuning tutorial](https://www.neles.com/valves-services/pid-tuning-and-process-control-services/pid-tuning-tutorial/)
