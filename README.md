@@ -1,6 +1,6 @@
 # Tracking drones with a PTU(Pan and Tilt Unit)
 
-### Components
+## Main Components
 
 Component | Brand, Type | Documentation | Role |
  :------------: | :-----------: | :-----------: | ----------- |
@@ -23,7 +23,7 @@ Laser Ranger| __[Bosch GLM 50c](https://www.bosch-professional.com/ao/en/product
 *Note that step-7 is not implemented yet!*
 
 ## Setup
-- After cloning the repo issue "pip install -r requirements.txt" to install the packages.
+- After cloning the repo issue "pip install -r requirements.txt" to install the dependent Python packages.
 - issue "protoc --version" on the terminal to check if you have protoc installed. 
 - If not install protocol buffer https://grpc.io/docs/protoc-installation/
 - run the following commands on the terminal for TensorFlow Object Detection API
